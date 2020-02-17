@@ -43,6 +43,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ClearMainImageButton = new System.Windows.Forms.Button();
             this.TextPanel = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.AvalableMemoryLabel = new System.Windows.Forms.Label();
+            this.AvalableMemoryTitle = new System.Windows.Forms.Label();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePreview)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -52,6 +58,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.TextPanel.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenImageButton
@@ -91,7 +99,7 @@
             this.ImagePreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ImagePreview.Location = new System.Drawing.Point(3, 3);
             this.ImagePreview.Name = "ImagePreview";
-            this.ImagePreview.Size = new System.Drawing.Size(495, 362);
+            this.ImagePreview.Size = new System.Drawing.Size(494, 362);
             this.ImagePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImagePreview.TabIndex = 2;
             this.ImagePreview.TabStop = false;
@@ -122,6 +130,8 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.AvalableMemoryTitle);
+            this.MainPanel.Controls.Add(this.AvalableMemoryLabel);
             this.MainPanel.Controls.Add(this.OpenImageButton);
             this.MainPanel.Controls.Add(this.EncryptTextButton);
             this.MainPanel.Controls.Add(this.EncryptImageButton);
@@ -171,9 +181,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(504, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(503, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(281, 362);
+            this.pictureBox1.Size = new System.Drawing.Size(282, 362);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -205,7 +215,7 @@
             // 
             this.ClearMainImageButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ClearMainImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClearMainImageButton.Location = new System.Drawing.Point(118, 10);
+            this.ClearMainImageButton.Location = new System.Drawing.Point(117, 10);
             this.ClearMainImageButton.Margin = new System.Windows.Forms.Padding(10);
             this.ClearMainImageButton.Name = "ClearMainImageButton";
             this.ClearMainImageButton.Size = new System.Drawing.Size(265, 44);
@@ -216,11 +226,72 @@
             // 
             // TextPanel
             // 
+            this.TextPanel.Controls.Add(this.panel4);
+            this.TextPanel.Controls.Add(this.panel3);
+            this.TextPanel.Controls.Add(this.richTextBox1);
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TextPanel.Location = new System.Drawing.Point(0, 432);
             this.TextPanel.Name = "TextPanel";
             this.TextPanel.Size = new System.Drawing.Size(788, 180);
             this.TextPanel.TabIndex = 3;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(788, 180);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 151);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(788, 29);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.vScrollBar1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(748, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(40, 151);
+            this.panel4.TabIndex = 2;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.vScrollBar1.Location = new System.Drawing.Point(0, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 151);
+            this.vScrollBar1.TabIndex = 3;
+            // 
+            // AvalableMemoryLabel
+            // 
+            this.AvalableMemoryLabel.AutoSize = true;
+            this.AvalableMemoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AvalableMemoryLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.AvalableMemoryLabel.Location = new System.Drawing.Point(44, 427);
+            this.AvalableMemoryLabel.Name = "AvalableMemoryLabel";
+            this.AvalableMemoryLabel.Size = new System.Drawing.Size(117, 24);
+            this.AvalableMemoryLabel.TabIndex = 5;
+            this.AvalableMemoryLabel.Text = "102400 байт";
+            this.AvalableMemoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // AvalableMemoryTitle
+            // 
+            this.AvalableMemoryTitle.AutoSize = true;
+            this.AvalableMemoryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AvalableMemoryTitle.ForeColor = System.Drawing.SystemColors.Control;
+            this.AvalableMemoryTitle.Location = new System.Drawing.Point(16, 368);
+            this.AvalableMemoryTitle.Name = "AvalableMemoryTitle";
+            this.AvalableMemoryTitle.Size = new System.Drawing.Size(173, 40);
+            this.AvalableMemoryTitle.TabIndex = 6;
+            this.AvalableMemoryTitle.Text = "Доступная в \r\nизображении память:";
+            this.AvalableMemoryTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MainForm
             // 
@@ -238,12 +309,15 @@
             this.StatusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePreview)).EndInit();
             this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
             this.BackgroundPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.TableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.TextPanel.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,6 +340,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label AvalableMemoryTitle;
+        private System.Windows.Forms.Label AvalableMemoryLabel;
     }
 }
 
