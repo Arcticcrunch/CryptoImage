@@ -20,6 +20,7 @@ namespace CryptoImage
         public MainForm()
         {
             InitializeComponent();
+            AvalableMemoryTooltip.SetToolTip(AvalableMemoryLabel, "0 байт");
             MainImageLoadedEvent += OnImageLoaded;
             MainImageClearedEvent += OnImageCleared;
             
@@ -75,7 +76,7 @@ namespace CryptoImage
             }
             else
             {
-                SetAvalableMemoryLabel(100900005);
+                SetAvalableMemoryLabel(141005);
             }
         }
         // Событие при очистке главного изображения
@@ -88,11 +89,14 @@ namespace CryptoImage
         }
         
 
+
         private void SetAvalableMemoryLabel(ulong memory)
         {
-            string result = ""; 
+            string result = "";
+            string bytesResult = "";
             string formatedResult = "";
             bool isMegabyte = false;
+
             if (memory < 1000000)
             {
                 result = memory.ToString();
@@ -100,30 +104,53 @@ namespace CryptoImage
             else
             {
                 isMegabyte = true;
-                result = ((ulong)(memory * 0.000001)).ToString();
+                result = ((ulong) Math.Round(memory * 0.000001)).ToString();
+                StatusStripMainText.Text = result;
             }
 
-            formatedResult += result[result.Length - 1];
+            bytesResult = FormatMemoryString(memory.ToString());
+            AvalableMemoryTooltip.SetToolTip(AvalableMemoryLabel, bytesResult + " байт");
+
+            formatedResult = FormatMemoryString(result);
+            
+            if (isMegabyte)
+                formatedResult += " мегабайт";
+            else formatedResult += " байт";
+            AvalableMemoryLabel.Text = formatedResult;
+        }
+
+
+        /// <summary>
+        /// Форматирование строки с пробелами через каждые 3 символа начиная с конца.
+        /// </summary>
+        /// <param name="inputString">Входная строка</param>
+        /// <returns></returns>
+        private string FormatMemoryString(string inputString)
+        {
+            string result = "";
             byte counter = 0;
-            for (int i = result.Length - 2; i >= 0; i--)
+            if (inputString == null)
+                return result;
+            if (inputString.Length == 0)
+                return result;
+            result += inputString[inputString.Length - 1];
+            for (int i = inputString.Length - 2; i >= 0; i--)
             {
-                if (counter < 3)
+                if (counter < 2)
                 {
-                    formatedResult += result[i];
+                    result += inputString[i];
                     counter++;
                 }
                 else
                 {
                     counter = 0;
-                    formatedResult += ' ';
-                    formatedResult += result[i];
+                    result += ' ';
+                    result += inputString[i];
                 }
             }
-            formatedResult.Reverse();
-            if (isMegabyte)
-                formatedResult += " мегабайт";
-            else formatedResult += " байт";
-            AvalableMemoryLabel.Text = formatedResult;
+            char[] reversedString = result.ToCharArray();
+            Array.Reverse(reversedString);
+            return new string(reversedString);
         }
     }
 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OpenImageButton = new System.Windows.Forms.Button();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusStripMainText = new System.Windows.Forms.ToolStripStatusLabel();
@@ -35,6 +37,8 @@
             this.EncryptTextButton = new System.Windows.Forms.Button();
             this.EncryptImageButton = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.AvalableMemoryTitle = new System.Windows.Forms.Label();
+            this.AvalableMemoryLabel = new System.Windows.Forms.Label();
             this.BackgroundPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TableLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -43,12 +47,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ClearMainImageButton = new System.Windows.Forms.Button();
             this.TextPanel = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.AvalableMemoryLabel = new System.Windows.Forms.Label();
-            this.AvalableMemoryTitle = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.AvalableMemoryTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.StatusProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePreview)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -77,6 +81,7 @@
             // StatusStrip
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusProgressBar,
             this.StatusStripMainText});
             this.StatusStrip.Location = new System.Drawing.Point(0, 612);
             this.StatusStrip.Name = "StatusStrip";
@@ -141,6 +146,30 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(212, 612);
             this.MainPanel.TabIndex = 6;
+            // 
+            // AvalableMemoryTitle
+            // 
+            this.AvalableMemoryTitle.AutoSize = true;
+            this.AvalableMemoryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AvalableMemoryTitle.ForeColor = System.Drawing.SystemColors.Control;
+            this.AvalableMemoryTitle.Location = new System.Drawing.Point(16, 368);
+            this.AvalableMemoryTitle.Name = "AvalableMemoryTitle";
+            this.AvalableMemoryTitle.Size = new System.Drawing.Size(173, 40);
+            this.AvalableMemoryTitle.TabIndex = 6;
+            this.AvalableMemoryTitle.Text = "Доступная в \r\nизображении память:";
+            this.AvalableMemoryTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // AvalableMemoryLabel
+            // 
+            this.AvalableMemoryLabel.AutoSize = true;
+            this.AvalableMemoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AvalableMemoryLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.AvalableMemoryLabel.Location = new System.Drawing.Point(44, 427);
+            this.AvalableMemoryLabel.Name = "AvalableMemoryLabel";
+            this.AvalableMemoryLabel.Size = new System.Drawing.Size(117, 24);
+            this.AvalableMemoryLabel.TabIndex = 5;
+            this.AvalableMemoryLabel.Text = "102400 байт";
+            this.AvalableMemoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // BackgroundPanel
             // 
@@ -235,23 +264,6 @@
             this.TextPanel.Size = new System.Drawing.Size(788, 180);
             this.TextPanel.TabIndex = 3;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(788, 180);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 151);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(788, 29);
-            this.panel3.TabIndex = 1;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.vScrollBar1);
@@ -269,29 +281,35 @@
             this.vScrollBar1.Size = new System.Drawing.Size(17, 151);
             this.vScrollBar1.TabIndex = 3;
             // 
-            // AvalableMemoryLabel
+            // panel3
             // 
-            this.AvalableMemoryLabel.AutoSize = true;
-            this.AvalableMemoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AvalableMemoryLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AvalableMemoryLabel.Location = new System.Drawing.Point(44, 427);
-            this.AvalableMemoryLabel.Name = "AvalableMemoryLabel";
-            this.AvalableMemoryLabel.Size = new System.Drawing.Size(117, 24);
-            this.AvalableMemoryLabel.TabIndex = 5;
-            this.AvalableMemoryLabel.Text = "102400 байт";
-            this.AvalableMemoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 151);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(788, 29);
+            this.panel3.TabIndex = 1;
             // 
-            // AvalableMemoryTitle
+            // richTextBox1
             // 
-            this.AvalableMemoryTitle.AutoSize = true;
-            this.AvalableMemoryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AvalableMemoryTitle.ForeColor = System.Drawing.SystemColors.Control;
-            this.AvalableMemoryTitle.Location = new System.Drawing.Point(16, 368);
-            this.AvalableMemoryTitle.Name = "AvalableMemoryTitle";
-            this.AvalableMemoryTitle.Size = new System.Drawing.Size(173, 40);
-            this.AvalableMemoryTitle.TabIndex = 6;
-            this.AvalableMemoryTitle.Text = "Доступная в \r\nизображении память:";
-            this.AvalableMemoryTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(788, 180);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // AvalableMemoryTooltip
+            // 
+            this.AvalableMemoryTooltip.ToolTipTitle = "Доступно памяти для записи в изображение (зависит от размера главного изображения" +
+    ")";
+            // 
+            // StatusProgressBar
+            // 
+            this.StatusProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.StatusProgressBar.Name = "StatusProgressBar";
+            this.StatusProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StatusProgressBar.Size = new System.Drawing.Size(210, 16);
+            this.StatusProgressBar.Value = 50;
             // 
             // MainForm
             // 
@@ -302,6 +320,7 @@
             this.Controls.Add(this.BackgroundPanel);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.StatusStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crypto Image";
@@ -346,6 +365,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label AvalableMemoryTitle;
         private System.Windows.Forms.Label AvalableMemoryLabel;
+        private System.Windows.Forms.ToolTip AvalableMemoryTooltip;
+        private System.Windows.Forms.ToolStripProgressBar StatusProgressBar;
     }
 }
 
